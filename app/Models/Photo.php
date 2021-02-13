@@ -20,7 +20,9 @@ class Photo extends Model
     ];
 
     /**
-     * The services that belong to the astrologer.
+     * The photo that belong to the astrologer.
+     * 
+     * @return BelongsTo
      */
     public function Astrologer(): BelongsTo
     {

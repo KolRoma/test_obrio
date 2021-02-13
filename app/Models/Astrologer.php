@@ -20,7 +20,9 @@ class Astrologer extends Model
     ];
 
     /**
-     * The services that belong to many the astrologer.
+     * The astrologer that belong to many the services.
+     * 
+     * @return BelongsToMany
      */
     public function services(): BelongsToMany
     {
@@ -28,7 +30,9 @@ class Astrologer extends Model
     }
 
     /**
-     * The services that belong to the astrologer.
+     * The astrologer that has one the photo.
+     * 
+     * @return HasOne
      */
     public function photo(): HasOne
     {

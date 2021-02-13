@@ -21,6 +21,8 @@ class Service extends Model
 
     /**
      * The services that belong to the astrologer.
+     * 
+     * @return BelongsToMany
      */
     public function astrologers(): BelongsToMany
     {

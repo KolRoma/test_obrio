@@ -24,7 +24,7 @@ class Astrologer extends Model
      */
     public function services(): BelongsToMany
     {
-        return $this->belongsToMany(Service::class)->withPivot('prices');
+        return $this->belongsToMany(Service::class)->withPivot('price');
     }
 
     /**

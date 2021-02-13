@@ -2,8 +2,12 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Http\Response;
+use Illuminate\Database\QueryException;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -33,8 +37,16 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->reportable(function (QueryException $e) {
+            return response($e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        });
+
+        $this->reportable(function (ValidationException $e) {
+            return response($e->getMessage(), Response::HTTP_UNPROCESSABLE_ENTITY);
+        });
+
+        $this->reportable(function (ModelNotFoundException $e) {
+            return response(['errors' => 'Resource Not Found'], Response::HTTP_NOT_FOUND);
         });
     }
 }

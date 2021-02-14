@@ -3,11 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\OrderCreated;
-use App\Services\Google\GoogleClient;
-use App\Services\Google\GoogleService;
-use Illuminate\Support\Facades\App;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Jobs\SendOrderToGoogleSheets as SendOrderToGoogleSheetsJob;
 
 class SendOrderToGoogleSheets
 {
@@ -29,7 +25,6 @@ class SendOrderToGoogleSheets
      */
     public function handle(OrderCreated $event)
     {
-        $client = GoogleClient::getClient();
-        GoogleService::appendSheets($client, $event->order);
+        dispatch(new SendOrderToGoogleSheetsJob($event->order));
     }
 }

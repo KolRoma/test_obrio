@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "4106b2af-5948-440a-a6a0-a33b6aa53bd9",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Astrologers",
+			"item": [
+				{
+					"name": "Get astrologers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_enpoint}}/astrologers",
+							"host": [
+								"{{api_enpoint}}"
+							],
+							"path": [
+								"astrologers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Astrologer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_enpoint}}/astrologers/1",
+							"host": [
+								"{{api_enpoint}}"
+							],
+							"path": [
+								"astrologers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@mail.com\",\n    \"full_name\": \"John Smith\",\n    \"astrologer_service_id\": \"3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_enpoint}}/orders",
+							"host": [
+								"{{api_enpoint}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

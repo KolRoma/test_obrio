@@ -25,7 +25,7 @@ class OrderRequest extends FormRequest
     {
         return [
             'full_name' => ['string', 'max:255'],
-            'email'     => ['string', 'email:rfc,dns', 'max:255'],
+            'email'     => ['string', 'max:255'],
             'astrologer_service_id' => ['required', 'int', 'exists:astrologer_service,id'],
         ];
     }

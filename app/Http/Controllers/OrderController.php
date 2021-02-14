@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderCreated;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -13,7 +14,7 @@ class OrderController extends Controller
     public function store(OrderRequest $request): Response
     {
         $order = Order::create($request->validated());
-        // event(new CreatedFriend(auth()->user()->account->id, $request->account_id));
+        event(new OrderCreated($order));
         return response(new OrderResource($order), Response::HTTP_CREATED);
     }
 }
